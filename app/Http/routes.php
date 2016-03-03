@@ -1,32 +1,50 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+Route::group(['middleware' => ['web']], function() {
+    //Week 5
 
-Route::get('/', function () {
-    //return view('welcome');
-    return 'Hello, welcome to my Laravel App';
-});
+    /* Before moving logic to controller
+    Route::get('/', function () {
+        //return view('welcome');
+        return 'Hello, welcome to my Laravel App';
+    });
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
+    Route::get('/book/create', function(){
+        $view = '<form method="post" action="/book/create">';
+        $view.= csrf_field();
+        $view.='Book title: <input type="text" name="title">';
+        $view.='<input type="submit">';
+        $view .='</form>';
+        return $view;
+    });
 
-Route::group(['middleware' => ['web']], function () {
-    //
+    Route::post('book/create', function(){
+        return 'Add the book '.$_POST['title'];
+    });
+
+    Route::get('/books', function () {
+        //return view('welcome');
+        return 'Here is a list of books';
+    });
+
+    Route::get('/book/{title}', function ($title) {
+        //return view('welcome');
+        return 'Here is your book '.$title;
+    });
+    */
+
+    /*Moving route logic to controller*/
+    Route::get('/', function () {
+        //return view('welcome');
+        return 'Hello, welcome to my Laravel App';
+    });
+
+    Route::get('/books', 'BookController@getIndex');
+
+    Route::get('/book/create', 'BookController@getCreate');
+    Route::post('/book/create', 'BookController@postCreate');
+
+    Route::get('/book/{id}','BookController@getShow');
+
+    Route::get('/test', 'BookController@getTest');
 });
