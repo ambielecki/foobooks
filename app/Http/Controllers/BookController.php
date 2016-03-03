@@ -40,6 +40,6 @@ class BookController extends Controller {
     }
 
     public function getTest(){
-        return 'Testing, 1...2...3';
+        echo config('app.url');
     }
 } // end of class
