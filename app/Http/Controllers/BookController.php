@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Rych\Random\Random;
 
 class BookController extends Controller {
 
@@ -16,15 +17,18 @@ class BookController extends Controller {
     /**
      * Responds to requests to GET /books/show/{id}
      */
-    public function getShow($id) {
-        return 'Show book: '.$id;
+    public function getShow($title = null) {
+        /*return 'Show book: '.$title;*/
+        /*return view('books.show')->with('title',$title);*/
+        return view('books.show', ['title'=>$title]);
     }
 
     /**
      * Responds to requests to GET /books/create
      */
     public function getCreate() {
-        $view = '<form method="post" action="/book/create">';
+
+        $view = '<form method="post">';
         $view.= csrf_field();
         $view.='<label>Book title: <input type="text" name="title"></label>';
         $view.='<input type="submit">';
@@ -40,6 +44,7 @@ class BookController extends Controller {
     }
 
     public function getTest(){
-        echo config('app.url');
+        $random = new Random();
+        return $random->getRandomString(8);
     }
 } // end of class

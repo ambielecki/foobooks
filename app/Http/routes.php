@@ -44,7 +44,9 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/book/create', 'BookController@getCreate');
     Route::post('/book/create', 'BookController@postCreate');
 
-    Route::get('/book/{id}','BookController@getShow');
+    Route::get('/book/show/{title?}','BookController@getShow');
 
     Route::get('/test', 'BookController@getTest');
+
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 });
