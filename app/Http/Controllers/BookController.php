@@ -44,7 +44,7 @@ class BookController extends Controller {
     }
 
     public function getTest(){
-        $random = new Random();
-        return $random->getRandomString(8);
+
     }
+
 } // end of class
