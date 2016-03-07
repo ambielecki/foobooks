@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Rych\Random\Random;
+use Faker\Factory;
 
 class BookController extends Controller {
 
@@ -36,6 +37,7 @@ class BookController extends Controller {
         return $view;
     }
 
+
     /**
      * Responds to requests to POST /books/create
      */
@@ -45,6 +47,10 @@ class BookController extends Controller {
 
     public function getTest(){
 
+        $data = Factory::create();
+        $address = $data->address;
+        $phone = $data->phoneNumber;
+        echo $address;
     }
 
 } // end of class

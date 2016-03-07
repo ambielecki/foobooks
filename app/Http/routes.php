@@ -34,17 +34,14 @@ Route::group(['middleware' => ['web']], function() {
     */
 
     /*Moving route logic to controller*/
-    Route::get('/', function () {
-        //return view('welcome');
-        return 'Hello, welcome to my Laravel App';
-    });
+
 
     Route::get('/books', 'BookController@getIndex');
 
     Route::get('/book/create', 'BookController@getCreate');
     Route::post('/book/create', 'BookController@postCreate');
 
-    Route::get('/book/show/{title?}','BookController@getShow');
+    Route::get('/book/{title?}','BookController@getShow');
 
     Route::get('/test', 'BookController@getTest');
 
