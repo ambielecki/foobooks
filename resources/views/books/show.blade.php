@@ -1,23 +1,15 @@
 @extends('layouts.master')
 
-
 @section('title')
-    Show book {{$title}}
+    Show book {{ $title }}
 @stop
 
-
-{{--
-This `head` section will be yielded right before the closing </head> tag.
-Use it to add specific things that *this* View needs in the head,
-such as a page specific stylesheets.
---}}
 @section('head')
-    <link href="/css/books/show.css" type='text/css' rel='stylesheet'>
+    <link href='/css/book/show.css' rel='stylesheet'>
 @stop
-
 
 @section('content')
-    @if($title)
+    @if(isset($title))
         <h1>Show book: {{ $title }}</h1>
     @else
         <h1>No book chosen</h1>
@@ -25,11 +17,6 @@ such as a page specific stylesheets.
 @stop
 
 
-{{--
-This `body` section will be yielded right before the closing </body> tag.
-Use it to add specific things that *this* View needs at the end of the body,
-such as a page specific JavaScript files.
---}}
 @section('body')
-    <script src="/js/books/show.js"></script>
+    <script src="/js/book/show.js"></script>
 @stop
