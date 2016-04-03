@@ -31,18 +31,18 @@ Add a new book
             name='author'
             value='{{ old('author') }}'
         >
-        <div class='error'>{{ $errors->first('title') }}</div>
+        <div class='error'>{{ $errors->first('author') }}</div>
     </div>
 
     <button type="submit" class="btn btn-primary">Add book</button>
 
-    {{--
-    <ul class=''>
+
+    {{--}}<ul class='error'>
         @foreach($errors->all() as $error)
         <li>{{ $error }}</li>
         @endforeach
-    </ul>
-    --}}
+    </ul>--}}
+
 
     <div class='error'>
         @if(count($errors) > 0)

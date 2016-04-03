@@ -21,4 +21,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
     }
 
+    route::get('/lipsum', 'BookController@getLipsum');
+
+    Route::get('/practice', 'BookController@getPractice');
+
 });
